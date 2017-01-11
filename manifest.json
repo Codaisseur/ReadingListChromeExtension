@@ -1,0 +1,48 @@
+{
+  "manifest_version": 2,
+  "name": "Save to Jons Know",
+  "description": "Save links directly with your team on Jons Know.",
+  "author": "Codaisseur",
+  "icons": {
+    "16": "icon-16.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  },
+  "version": "0.1",
+  "permissions": [
+    "storage",
+    "notifications"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "externally_connectable": {
+    "matches": [
+      "*://jons-know.herokuapp.com/*",
+      "http://localhost:3030/*"
+    ]
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+J"
+      }
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "core.min.js",
+        "feathers.js",
+        "superagent.min.js",
+        "content.js"
+      ]
+    }
+  ]
+}
